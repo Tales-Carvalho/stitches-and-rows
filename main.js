@@ -67,10 +67,18 @@ function undo() {
     stitches_counter.undo()
 }
 
+function edit() {
+    const new_stitches_counter = parseInt(prompt("Stitches:", stitches_counter.count))
+    const new_rows_counter = parseInt(prompt("Rows:", rows_counter.count))
+    stitches_counter.set(isNaN(new_stitches_counter) ? stitches_counter.count : new_stitches_counter)
+    rows_counter.set(isNaN(new_rows_counter) ? rows_counter.count : new_rows_counter)
+}
+
 document.getElementById('button-stitch').onclick = increase_stitch
 document.getElementById('button-row').onclick = increase_row
 document.getElementById('button-reset').onclick = reset
 document.getElementById('button-undo').onclick = undo
+document.getElementById('button-edit').onclick = edit
 
 input_stitches.onchange = () => {
     localStorage['input_stitches'] = input_stitches.value

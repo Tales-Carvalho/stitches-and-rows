@@ -22,14 +22,17 @@ body {
     text-align: center;
 }
 
-.button-counter {
+button {
+    font-family: 'Roboto', sans-serif;
     font-size: 36px;
     border-radius: 10px;
     background-color: rgb(255, 169, 169);
     padding: 10px;
     margin: 0 25px;
+}
+
+.button-counter {
     width: 150px;
-    font-family: 'Roboto', sans-serif;
 }
 
 .div-buttons {
