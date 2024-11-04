@@ -74,6 +74,55 @@ function edit() {
     rows_counter.set(isNaN(new_rows_counter) ? rows_counter.count : new_rows_counter)
 }
 
+const pip_container = document.getElementById('div-pip-container')
+const pip_element = document.getElementById('div-pip-element')
+const pip_button = document.getElementById('button-start-pip')
+const pip_message = document.getElementById('div-pip-message')
+
+async function start_pip() {
+    if (window.documentPictureInPicture.window) {
+        return
+    }
+    const pipWindow = await window.documentPictureInPicture.requestWindow({
+        width: 480,
+        height: 300
+    })
+    for (const styleSheet of document.styleSheets) {
+        try {
+            const cssRules = [...styleSheet.cssRules]
+                .map((rule) => rule.cssText)
+                .join("")
+            const style = document.createElement("style")
+            style.textContent = cssRules
+            pipWindow.document.head.appendChild(style)
+        } catch (e) {
+            const link = document.createElement("link")
+            link.rel = "stylesheet"
+            link.type = styleSheet.type
+            link.media = styleSheet.media
+            link.href = styleSheet.href
+            pipWindow.document.head.appendChild(link)
+        }
+    }
+    pipWindow.document.body.append(pip_element)
+    pip_message.style.display = "block"
+    pipWindow.addEventListener("pagehide", stop_pip)
+    pip_button.removeEventListener("click", start_pip)
+    pip_button.addEventListener("click", stop_pip)
+}
+
+function stop_pip() {
+    pip_container.append(pip_element)
+    pip_button.removeEventListener("click", stop_pip)
+    pip_button.addEventListener("click", start_pip)
+    pip_message.style.display = "none"
+    if (window.documentPictureInPicture.window) {
+        window.documentPictureInPicture.window.close()
+    }
+}
+
+pip_button.addEventListener("click", start_pip)
+
 document.getElementById('button-stitch').onclick = increase_stitch
 document.getElementById('button-row').onclick = increase_row
 document.getElementById('button-reset').onclick = reset

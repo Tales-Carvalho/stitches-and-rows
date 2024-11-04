@@ -22,6 +22,13 @@ body {
     text-align: center;
 }
 
+#div-pip-message {
+    background-color: rgb(255, 169, 169);
+    padding: 84px 10px;
+    margin: 25px;
+    text-align: center;
+}
+
 button {
     font-family: 'Roboto', sans-serif;
     font-size: 36px;

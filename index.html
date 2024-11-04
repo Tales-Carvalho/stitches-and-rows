@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" integrity="sha512-6f7HT84a/AplPkpSRSKWqbseRTG4aRrhadjZezYQ0oVk/B+nm/US5KzQkyyOyh0Mn9cyDdChRdS9qaxJRHayww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,22 +23,32 @@
             <label for="input-autoincrease">Auto-increase rows when completed</label>
         </p>
     </div>
-    <div class="div-counters">
-        <button id="button-stitch" class="button-counter">
-            <div id="stitches-counter">0</div>
-            <div id="stitches-counter-text">Stitches</div>
-        </button>
-        <button id="button-row" class="button-counter">
-            <div id="rows-counter">0</div>
-            <div id="rows-counter-text">Rows</div>
-        </button>
-    </div>
-    <div class="div-buttons">
-        <button id="button-undo">Undo</button>
-        <button id="button-reset">Reset</button>
+    <div id="div-pip-container">
+        <div id="div-pip-element">
+            <div class="div-counters">
+                <button id="button-stitch" class="button-counter">
+                    <div id="stitches-counter">0</div>
+                    <div id="stitches-counter-text">Stitches</div>
+                </button>
+                <button id="button-row" class="button-counter">
+                    <div id="rows-counter">0</div>
+                    <div id="rows-counter-text">Rows</div>
+                </button>
+            </div>
+            <div class="div-buttons">
+                <button id="button-undo">Undo</button>
+                <button id="button-reset">Reset</button>
+            </div>
+        </div>
+        <div id="div-pip-message" style="display: none;">
+            In picture-in-picture mode
+        </div>
     </div>
     <div class="div-buttons">
         <button id="button-edit">Edit Values</button>
+    </div>
+    <div id="div-button-pip" class="div-buttons">
+            <button id="button-start-pip"><i class="fui-export"></i></button>
     </div>
 </body>
 </html>
