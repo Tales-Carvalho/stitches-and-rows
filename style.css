@@ -15,11 +15,23 @@ body {
     text-align: center;
 }
 
+.div-buttons {
+    margin: 25px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .div-counters {
     margin: 25px 0;
     display: flex;
     justify-content: space-evenly;
     text-align: center;
+}
+
+#div-pip-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 #div-pip-message {
@@ -38,16 +50,27 @@ button {
     margin: 0 25px;
 }
 
+@media (display-mode: picture-in-picture) {
+    #div-pip-element {
+        height: 100vh;
+    }
+    button {
+        font-size: 18px;
+        margin: 0 8px;
+        padding: 5px;
+    }
+    .div-buttons {
+        margin: 12px 0;
+    }
+    .div-counters {
+        margin: 12px 0 0 0;
+    }
+}
+
 .button-counter {
-    width: 150px;
+    width: 5em;
 }
 
-.div-buttons {
-    margin: 25px 0;
-    display: flex;
-    justify-content: space-evenly;
-
-}
 
 label {
     vertical-align: middle;

@@ -84,8 +84,8 @@ async function start_pip() {
         return
     }
     const pipWindow = await window.documentPictureInPicture.requestWindow({
-        width: 480,
-        height: 300
+        width: 280,
+        height: 140
     })
     for (const styleSheet of document.styleSheets) {
         try {
