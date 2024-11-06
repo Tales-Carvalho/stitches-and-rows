@@ -7,71 +7,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.div-inputs {
-    border-radius: 10px;
-    background-color: rgb(255, 169, 169);
-    padding: 10px;
-    margin: 25px;
-    text-align: center;
-}
-
-.div-buttons {
-    margin: 25px 0;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.div-counters {
-    margin: 25px 0;
-    display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-}
-
-#div-pip-element {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-#div-pip-message {
-    background-color: rgb(255, 169, 169);
-    padding: 84px 10px;
-    margin: 25px;
-    text-align: center;
-}
-
-button {
-    font-family: 'Roboto', sans-serif;
-    font-size: 36px;
-    border-radius: 10px;
-    background-color: rgb(255, 169, 169);
-    padding: 10px;
-    margin: 0 25px;
-}
-
-@media (display-mode: picture-in-picture) {
-    #div-pip-element {
-        height: 100vh;
-    }
-    button {
-        font-size: 18px;
-        margin: 0 8px;
-        padding: 5px;
-    }
-    .div-buttons {
-        margin: 12px 0;
-    }
-    .div-counters {
-        margin: 12px 0 0 0;
-    }
-}
-
-.button-counter {
-    width: 5em;
-}
-
-
 label {
     vertical-align: middle;
 }
@@ -83,3 +18,76 @@ input {
     height: 30px;
     background-color: rgb(255, 200, 200);
 }
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3vh;
+    border-radius: 10px;
+    background-color: rgb(255, 169, 169);
+    padding: 2vh 2vw;
+    margin: 0 4vw;
+    height: 8vh;
+}
+
+.button-counter {
+    width: 6em;
+    height: 12vh;
+}
+
+.div-inputs {
+    border-radius: 10px;
+    background-color: rgb(255, 169, 169);
+    padding: 2vh 2vw;
+    margin: 4vh 4vw;
+    text-align: center;
+}
+
+.div-buttons {
+    margin: 4vh 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.div-counters {
+    margin: 4vh 0;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+#div-pip-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 10vw;
+}
+
+#div-pip-message {
+    background-color: rgb(255, 169, 169);
+    padding: 84px 10px;
+    margin: 25px;
+    text-align: center;
+}
+
+@media (display-mode: picture-in-picture) {
+    #div-pip-element {
+        height: 100vh;
+        padding: 0 5vw;
+    }
+    button {
+        font-size: 7vw;
+        margin: 0 1vw;
+        padding: 1vh 1vw;
+        height: 18vh;
+    }
+    .button-counter {
+        height: 36vh;
+    }
+    .div-buttons {
+        margin: 0.5vw 0;
+    }
+    .div-counters {
+        margin: 0.5vw 0 0 0;
+    }
+}
+

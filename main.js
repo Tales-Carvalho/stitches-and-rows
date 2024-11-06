@@ -1,4 +1,5 @@
 MAX_HISTORY_LENGTH = 32
+PIP_WINDOW_SIZE = { width: 280, height: 140 }
 
 class Counter {
     constructor (
@@ -74,54 +75,69 @@ function edit() {
     rows_counter.set(isNaN(new_rows_counter) ? rows_counter.count : new_rows_counter)
 }
 
-const pip_container = document.getElementById('div-pip-container')
-const pip_element = document.getElementById('div-pip-element')
-const pip_button = document.getElementById('button-start-pip')
-const pip_message = document.getElementById('div-pip-message')
-
-async function start_pip() {
-    if (window.documentPictureInPicture.window) {
-        return
+class PipManager {
+    constructor (
+        pip_element,
+        pip_container,
+        pip_button,
+        pip_message,
+        pip_window_size
+    ) {
+        this.pip_element = pip_element
+        this.pip_container = pip_container
+        this.pip_button = pip_button
+        this.pip_message = pip_message
+        this.pip_window_size = pip_window_size
+        this.pip_button.addEventListener("click", this.start_pip)
     }
-    const pipWindow = await window.documentPictureInPicture.requestWindow({
-        width: 280,
-        height: 140
-    })
-    for (const styleSheet of document.styleSheets) {
-        try {
-            const cssRules = [...styleSheet.cssRules]
-                .map((rule) => rule.cssText)
-                .join("")
-            const style = document.createElement("style")
-            style.textContent = cssRules
-            pipWindow.document.head.appendChild(style)
-        } catch (e) {
-            const link = document.createElement("link")
-            link.rel = "stylesheet"
-            link.type = styleSheet.type
-            link.media = styleSheet.media
-            link.href = styleSheet.href
-            pipWindow.document.head.appendChild(link)
+    start_pip = async () => {
+        if (window.documentPictureInPicture.window) {
+            return
+        }
+        this.pip_window = await window.documentPictureInPicture.requestWindow(
+            this.pip_window_size
+        )
+        for (const styleSheet of document.styleSheets) {
+            try {
+                const cssRules = [...styleSheet.cssRules]
+                    .map((rule) => rule.cssText)
+                    .join("")
+                const style = document.createElement("style")
+                style.textContent = cssRules
+                this.pip_window.document.head.appendChild(style)
+            } catch (e) {
+                const link = document.createElement("link")
+                link.rel = "stylesheet"
+                link.type = styleSheet.type
+                link.media = styleSheet.media
+                link.href = styleSheet.href
+                this.pip_window.document.head.appendChild(link)
+            }
+        }
+        this.pip_window.document.body.append(this.pip_element)
+        this.pip_message.style.display = "block"
+        this.pip_window.addEventListener("pagehide", this.stop_pip)
+        this.pip_button.removeEventListener("click", this.start_pip)
+        this.pip_button.addEventListener("click", this.stop_pip)
+    }
+    stop_pip = () => {
+        this.pip_container.append(this.pip_element)
+        this.pip_button.removeEventListener("click", this.stop_pip)
+        this.pip_button.addEventListener("click", this.start_pip)
+        this.pip_message.style.display = "none"
+        if (window.documentPictureInPicture.window) {
+            window.documentPictureInPicture.window.close()
         }
     }
-    pipWindow.document.body.append(pip_element)
-    pip_message.style.display = "block"
-    pipWindow.addEventListener("pagehide", stop_pip)
-    pip_button.removeEventListener("click", start_pip)
-    pip_button.addEventListener("click", stop_pip)
 }
 
-function stop_pip() {
-    pip_container.append(pip_element)
-    pip_button.removeEventListener("click", stop_pip)
-    pip_button.addEventListener("click", start_pip)
-    pip_message.style.display = "none"
-    if (window.documentPictureInPicture.window) {
-        window.documentPictureInPicture.window.close()
-    }
-}
-
-pip_button.addEventListener("click", start_pip)
+new PipManager(
+    document.getElementById('div-pip-element'),
+    document.getElementById('div-pip-container'),
+    document.getElementById('button-start-pip'),
+    document.getElementById('div-pip-message'),
+    PIP_WINDOW_SIZE
+)
 
 document.getElementById('button-stitch').onclick = increase_stitch
 document.getElementById('button-row').onclick = increase_row
