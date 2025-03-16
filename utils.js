@@ -115,7 +115,7 @@ class PipManager {
             }
         }
         this.pip_window.document.body.append(this.pip_element)
-        this.pip_message.style.display = "block"
+        this.pip_message.style.display = ""
         this.pip_window.addEventListener("pagehide", this.stop_pip)
         this.pip_button.removeEventListener("click", this.start_pip)
         this.pip_button.addEventListener("click", this.stop_pip)
