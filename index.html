@@ -28,18 +28,18 @@
     <div id="div-pip-container">
         <div id="div-pip-element">
             <div class="div-counters">
-                <button id="button-stitch" class="button-counter">
+                <button id="button-stitch" class="button-main button-counter">
                     <div id="stitches-counter">0</div>
                     <div id="stitches-counter-text">Stitches</div>
                 </button>
-                <button id="button-row" class="button-counter">
+                <button id="button-row" class="button-main button-counter">
                     <div id="rows-counter">0</div>
                     <div id="rows-counter-text">Rows</div>
                 </button>
             </div>
             <div class="div-buttons">
-                <button id="button-undo">Undo</button>
-                <button id="button-reset">Reset</button>
+                <button id="button-undo" class="button-main">Undo</button>
+                <button id="button-reset" class="button-main">Reset</button>
             </div>
         </div>
         <div id="div-pip-message" style="display: none;">
@@ -47,10 +47,45 @@
         </div>
     </div>
     <div class="div-buttons">
-        <button id="button-edit">Edit Values</button>
+        <button id="button-edit" class="button-main">Edit Values</button>
     </div>
     <div id="div-button-pip" class="div-buttons">
-            <button id="button-start-pip"><i class="fui-export"></i></button>
+        <button id="button-start-pip" class="button-main"><i class="fui-export"></i></button>
+    </div>
+    <div id="div-button-help">
+        <button id="button-help" data-bs-toggle="modal" data-bs-target="#help-modal">
+            <i class="fui-question-circle"></i>
+        </button>
+    </div>
+
+    <div class="modal fade" id="help-modal" tabindex="-1" aria-labelledby="help-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="help-modal-label">
+                        <i class="fui-info-circle"></i>
+                        About this project
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        This is <b>Stitches and Rows</b>, made by Tales Carvalho.
+                    </p>
+                    <p>
+                        The app is made in HTML and JavaScript, and is open source under MIT license in GitHub.
+                    </p>
+                    <p>
+                        You can support this and other open source projects by buying me a coffee on the heart icon below!
+                    </p>
+
+                    <p style="text-align:center;">
+                        <a class="icon-link" href="https://github.com/Tales-Carvalho/stitches-and-rows" target="_blank"><i class="fui-github"></i></a> | 
+                        <a class="icon-link" href="https://ko-fi.com/talescarvalho" target="_blank"><i class="fui-heart"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

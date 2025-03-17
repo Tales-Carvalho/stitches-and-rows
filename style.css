@@ -10,7 +10,9 @@ body {
     justify-content: space-around;
     height: 100vh;
     padding: 0 10vw;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
+    color: black;
 }
 
 label {
@@ -19,13 +21,14 @@ label {
 
 input {
     font-size: large;
+    text-align: center;
     border: 1px solid black;
     width: 40px;
     height: 30px;
     background-color: var(--color-secondary);
 }
 
-button {
+.button-main {
     font-size: 3vh;
     border-radius: 10px;
     background-color: var(--color-primary);
@@ -80,16 +83,34 @@ button {
     text-align: center;
 }
 
+#div-button-help {
+    position: fixed;
+    bottom: 2vh;
+    right: 2vw;
+}
+
+#button-help {
+    color: var(--color-primary);
+    font-size: 4vh;
+    text-shadow: 0px 0px 2px black;
+    background: transparent;
+    border: none;
+    padding: 1vh 1vw;
+}
+
+.icon-link {
+    font-size: 2vh;
+    color: black;
+    text-decoration: none;
+}
+
 @media (display-mode: picture-in-picture) {
-    body {
-        margin: 0;
-    }
     #div-pip-element {
         justify-content: space-evenly;
         height: 100vh;
         padding: 0 5vw;
     }
-    button {
+    .button-main {
         font-size: 7vw;
         margin: 0 1vw;
         padding: 1vh 1vw;
